@@ -17,13 +17,15 @@ npm install
 ```
 docker-compose up -d
 ```
-5. Ejercutar Seed
+5. Levantar 
+```
+npm run start:dev
+```
+
+6. Ejercutar Seed
 ```
 http://localhost:3005/api/seed
 ```
 
-6. Levantar 
-```
-npm run start:dev
-```
+
 
