@@ -28,6 +28,7 @@ export class Product {
     @ApiProperty({
         example: 0,
         description: "Product price",
+        minimum:0
     })
     @Column("float",{
         default:0
@@ -75,11 +76,16 @@ export class Product {
     @ApiProperty({
         example: "women",
         description: "Product gender",
+        enum: ['men', 'woman', 'kid', 'unisex'],
     })
     @Column("text")
     gender:string
 
-    @ApiProperty()
+    @ApiProperty({
+        description: 'Product tags',
+        example: ['shirt', 'casual', 'summer'],
+        type: [String],
+    })
     @Column("text",{
         array: true,
         default: []
@@ -87,7 +93,11 @@ export class Product {
     tags: string[]
 
 
-    @ApiProperty()
+    @ApiProperty({
+        description: 'Product images URLs',
+        example: ['img1.jpg', 'img2.jpg'],
+        type: [String],
+    })
     @OneToMany(
         () => ProductImage,
         (productImage) => productImage.product,
@@ -95,6 +105,10 @@ export class Product {
     )
     images?: ProductImage[]
 
+    @ApiProperty({
+    description: 'User who created or last updated the product',
+    type: () => User,
+    })
     @ManyToOne(
         () => User,
         (user) => user.product,

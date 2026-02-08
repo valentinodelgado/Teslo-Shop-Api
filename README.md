@@ -27,5 +27,30 @@ npm run start:dev
 http://localhost:3005/api/seed
 ```
 
+## 📘 Documentación de la API (Swagger)
+
+La API está completamente documentada utilizando **Swagger (OpenAPI)**, lo que permite explorar y probar todos los endpoints de forma interactiva.
+
+### 🔹 Swagger UI
+Con el proyecto en ejecución, la documentación interactiva se encuentra disponible en:
+```
+http://localhost:3005/api
+```
+
+Desde allí es posible:
+- Ver todos los endpoints disponibles
+- Probar requests directamente desde el navegador
+- Visualizar los esquemas de datos (DTOs y entidades)
+- Ver los requerimientos de autenticación (JWT)
+
+---
+
+### 🔹 Especificación OpenAPI
+
+El archivo de especificación OpenAPI se encuentra incluido en el repositorio __swagger.json__
+
+
+
+
 
 

@@ -5,7 +5,7 @@ import { fileFilter,fileNamer } from './helpers';
 import { diskStorage } from 'multer';
 import type { Response } from 'express';
 import { ConfigService } from '@nestjs/config';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBody, ApiConsumes, ApiOperation, ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
 
 
 @ApiTags("Files - Get and Upload")
@@ -17,6 +17,20 @@ export class FilesController {
   ) {}
 
   @Get("product/:imageName")
+  @ApiOperation({ summary: 'Get a product image by filename' })
+  @ApiParam({
+    name: 'imageName',
+    description: 'Product image filename',
+    example: 'product-123-main.jpg',
+  })
+  @ApiResponse({
+    status: 200,
+    description: 'Image file',
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Image not found',
+  })
   findProductImage(
     @Res() res: Response,
     @Param("imageName") imageName: string){
@@ -27,6 +41,33 @@ export class FilesController {
   }
 
   @Post("product")
+  @ApiOperation({ summary: 'Upload a product image' })
+  @ApiConsumes('multipart/form-data')
+  @ApiBody({
+    description: 'Product image file',
+    schema: {
+      type: 'object',
+      properties: {
+        file: {
+          type: 'string',
+          format: 'binary',
+        },
+      },
+    },
+  })
+  @ApiResponse({
+    status: 201,
+    description: 'Image uploaded successfully',
+    schema: {
+      example: {
+        secureUrl: 'http://localhost:3000/api/files/product/product-123-main.jpg',
+      },
+    },
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Invalid file type (only images allowed)',
+  })
   @UseInterceptors(FileInterceptor("file",{
     fileFilter: fileFilter,
     storage: diskStorage({
