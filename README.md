@@ -12,16 +12,16 @@ Incluye funcionalidad de productos, seed de datos, configuración con Docker y b
 - PostgreSQL → persistencia de datos
 - Docker + Docker Compose
 - Variables de entorno con `.env.template`
-- Documentacion con swagger `http://localhost:3005/api`
+- Documentacion con swagger ```http://localhost:3005/api```
 - Endpoints REST organizados por módulos
 - Seed para inicializar datos
 
 ## 🚀 Cómo ejecutar
 1. Clonar el repo
 2. Copiar `.env.template` a `.env`
-3. `docker-compose up -d`
-4. `npm install`
-5. `npm run start:dev`
+3. ```docker-compose up -d```
+4. ```npm install```
+5. ```npm run start:dev```
 6. Endpoint para seed: `/api/seed`
 
 ## 📌 Tecnologías
