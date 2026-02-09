@@ -49,6 +49,44 @@ Desde allí es posible:
 
 El archivo de especificación OpenAPI se encuentra incluido en el repositorio __swagger.json__
 
+## 🔌 Comunicación en tiempo real (WebSockets)
+
+El proyecto incluye un módulo de **comunicación en tiempo real** utilizando **WebSockets con Socket.IO**, implementado mediante **NestJS Gateways**.
+
+Este módulo permite:
+- Conectar clientes autenticados mediante JWT
+- Mantener un listado de clientes conectados
+- Enviar y recibir mensajes en tiempo real
+
+---
+
+### 🔐 Autenticación
+
+La conexión al WebSocket requiere un **JWT válido**, que es enviado desde el cliente en los headers de la conexión.
+
+Ejemplo (cliente):
+- Header: `authentication`
+- Valor: `JWT`
+
+Si el token no es válido o no está presente, el servidor rechaza la conexión.
+
+---
+
+### 📡 Eventos WebSocket
+
+#### 📥 Eventos recibidos por el servidor
+
+##### `message-from-client`
+Evento emitido por el cliente para enviar un mensaje al servidor.
+
+**Payload:**
+```ts
+{
+  id: string;       // Identificador del cliente (ej: "Yo")
+  message: string;  // Contenido del mensaje
+}
+
+
 
 
 
