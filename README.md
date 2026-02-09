@@ -22,7 +22,8 @@ Incluye funcionalidad de productos, seed de datos, configuración con Docker y b
 3. ```docker-compose up -d```
 4. ```npm install```
 5. ```npm run start:dev```
-6. Endpoint para seed: `/api/seed`
+6. Crear un usuario con role de admin
+7. Endpoint para seed: `/api/seed`, usar el token de admin
 
 ## 📌 Tecnologías
 - NestJS
